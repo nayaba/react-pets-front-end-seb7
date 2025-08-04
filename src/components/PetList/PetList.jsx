@@ -1,4 +1,5 @@
 const PetList = (props) => {
+
     return (
         <>
             <h1>Pet List</h1>
@@ -6,7 +7,10 @@ const PetList = (props) => {
             {props.pets.length ? (
             <ul>
                 {props.pets.map((pet) => 
-                <li key={pet._id}>
+                <li key={pet._id}
+                    style={{ cursor: 'pointer', color: "#646CFF" }}
+                    onClick={() => props.handleSelect(pet)}
+                >
                     {pet.name}
                 </li>
                 )}
