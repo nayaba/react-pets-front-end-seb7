@@ -9,6 +9,16 @@ const index = async () => {
     }
 }
 
+const create = async (formData) => {
+    console.log(formData)
+    try {
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 export {
     index,
+    create,
 }

@@ -1,6 +1,19 @@
 const PetDetail = (props) => {
+    if (props.selected) {
+        return (
+        <>
+            <h1>{props.selected.name}</h1>
+            <h2>Breed: {props.selected.breed}</h2>
+            <h2>
+                Age: {props.selected.age}
+            </h2>
+        </>
+    )
+    }
     return (
-        <h1>Pet Detail</h1>
+        <>
+            <h2>NO DETAILS</h2>
+        </>
     )
 }
 

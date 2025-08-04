@@ -2,6 +2,7 @@ import * as petService from './services/petService'
 import { useEffect, useState } from 'react'
 import PetList from './components/PetList/PetList'
 import PetDetail from './components/PetDetail/PetDetail'
+import PetForm from './components/PetForm/PetForm'
 
 const App = () => {
   const [pets, setPets] = useState([])
@@ -23,9 +24,17 @@ const App = () => {
     setSelected(pet)
   }
 
+  const handleAddPet = async (formData) => {
+    // await petService.create()
+    console.log(formData)
+  }
+
   return (
     <>
       <PetList pets={pets} handleSelect={handleSelect} />
+      <hr />
+      <PetForm handleAddPet={handleAddPet} />
+      <hr />
       <PetDetail selected={selected} />
     </>
   )
