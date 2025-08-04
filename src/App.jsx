@@ -29,11 +29,16 @@ const App = () => {
     setPets([newPet, ...pets])
   }
 
+  const handleUpdatePet = async (formData, petId) => {
+   const updatedPet = await petService.update(formData, petId)
+   console.log(updatedPet)
+  }
+
   return (
     <>
       <PetList pets={pets} handleSelect={handleSelect} />
       <hr />
-      <PetForm selected={selected} handleAddPet={handleAddPet} />
+      <PetForm selected={selected} handleAddPet={handleAddPet} handleUpdatePet={handleUpdatePet} />
       <hr />
       <PetDetail selected={selected} />
     </>

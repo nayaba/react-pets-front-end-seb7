@@ -16,9 +16,12 @@ const PetForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('the form was submitted!')
-        props.handleAddPet(formData)
-        setFormData(initialState)
+        if (props.selected) {
+            props.handleUpdatePet(formData, props.selected._id)
+        } else {
+            props.handleAddPet(formData)
+        }
+            setFormData(initialState)
     }
 
     return (
