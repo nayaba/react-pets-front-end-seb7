@@ -7,6 +7,7 @@ import PetForm from './components/PetForm/PetForm'
 const App = () => {
   const [pets, setPets] = useState([])
   const [selected, setSelected] = useState(null)
+  const [trigger, setTrigger] = useState(false)
   
   useEffect(() => {
     const fetchPets = async() => {
@@ -29,11 +30,16 @@ const App = () => {
     setPets([newPet, ...pets])
   }
 
+  const handleUpdatePet = async (formData, petId) => {
+    console.log(petId)
+    setTrigger(!trigger)
+  }
+
   return (
     <>
       <PetList pets={pets} handleSelect={handleSelect} />
       <hr />
-      <PetForm selected={selected} handleAddPet={handleAddPet} />
+      <PetForm selected={selected} handleAddPet={handleAddPet} handleUpdatePet={handleUpdatePet} />
       <hr />
       <PetDetail selected={selected} />
     </>

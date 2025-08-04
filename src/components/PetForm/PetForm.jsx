@@ -1,14 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const PetForm = (props) => {
 
-    const initialState = {
-        name: '', 
-        age: '',
-        breed: '',
-    }
+    let initialState =  {
+            name: '', 
+            age: '',
+            breed: '',
+        }
 
-    const [formData, setFormData] = useState(initialState)
+    const [formData, setFormData] = useState(
+    props.selected ? props.selected : initialState
+  )
+
+    useEffect(() => {
+    setFormData(props.selected ? props.selected : initialState);
+  }, [props.selected])
 
     const handleChange = (evt) => {
         setFormData({...formData, [evt.target.name]: evt.target.value})
@@ -16,9 +22,15 @@ const PetForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('the form was submitted!')
-        props.handleAddPet(formData)
-        setFormData(initialState)
+        if (props.selected) {
+            console.log('udpate pet')
+            props.handleUpdatePet(formData, props.selected._id)
+            setFormData(initialState)
+        } else {
+            console.log('add pet')
+            props.handleAddPet(formData)
+            setFormData(initialState)
+        }
     }
 
     return (
