@@ -25,15 +25,15 @@ const App = () => {
   }
 
   const handleAddPet = async (formData) => {
-    // await petService.create()
-    console.log(formData)
+    const newPet = await petService.create(formData)
+    setPets([newPet, ...pets])
   }
 
   return (
     <>
       <PetList pets={pets} handleSelect={handleSelect} />
       <hr />
-      <PetForm handleAddPet={handleAddPet} />
+      <PetForm selected={selected} handleAddPet={handleAddPet} />
       <hr />
       <PetDetail selected={selected} />
     </>

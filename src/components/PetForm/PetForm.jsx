@@ -36,7 +36,7 @@ const PetForm = (props) => {
                 <label htmlFor="breed">Breed:</label>
                 <input type="text" name="breed" value={formData.breed} id="breed" onChange={handleChange} />
 
-                <button type="submit">Add New Pet</button>
+                <button type="submit">{props.selected ? 'Update Pet' : 'Add New Pet'}</button>
             </form>
         </>
     )
